@@ -94,10 +94,10 @@ function webcomic_print_cells( $item ) {
 function webcomic_contextual_help_list( $_wp_contextual_help ) {
 	$help = '<p><a href="http://code.google.com/p/webcomic/wiki/Metaboxes" target="_blank">' . __( 'Using the Webcomic Metabox', 'webcomic' ) . '</a><br /><a href="http://code.google.com/p/webcomic/w/list" target="_blank">' . __( 'Webcomic Documentation', 'webcomic' ) . '</a><br /><a href="http://maikeruon.com/wcib/forum/" target="_blank">' . __( 'Webcomic Support Forum', 'webcomic' ) . '</a></p>';
 	
-	if ( $_wp_contextual_help[ 'post' ] )
+	if ( isset($_wp_contextual_help[ 'post' ]) )
 		$_wp_contextual_help[ 'post' ] .= $help;
 		
-	if ( $_wp_contextual_help[ 'page' ] )
+	if ( isset($_wp_contextual_help[ 'page' ]) )
 		$_wp_contextual_help[ 'page' ] .= $help;
 	
 	return $_wp_contextual_help;

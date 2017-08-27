@@ -32,9 +32,9 @@ function webcomic_widgets_init() {
  */
 class WP_Widget_Bookmark_Comic extends WP_Widget {
 	//constructor
-	function WP_Widget_Bookmark_Comic() {
+	function __construct() {
 		$widget_ops = array( 'description' => __( 'Displays comic bookmark links that allow readers to save their place and return later', 'webcomic' ) );
-		$this->WP_Widget( 'bookmark-comic', __( 'Bookmark Comic', 'webcomic' ), $widget_ops );
+		parent::__construct( 'bookmark-comic', __( 'Bookmark Comic', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -55,9 +55,9 @@ class WP_Widget_Bookmark_Comic extends WP_Widget {
  */
 class WP_Widget_Comic_Buffer extends WP_Widget {
 	//constructor
-	function WP_Widget_Comic_Buffer() {
+	function __construct() {
 		$widget_ops = array( 'description' => __( 'Displays buffer comic information', 'webcomic' ) );
-		$this->WP_Widget( 'comic-buffer', __( 'Comic Buffer', 'webcomic' ), $widget_ops );
+		parent::__construct( 'comic-buffer', __( 'Comic Buffer', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -134,11 +134,11 @@ class WP_Widget_Comic_Buffer extends WP_Widget {
  */
 class WP_Widget_Random_Comic extends WP_Widget {
 	//contructor
-	function WP_Widget_Random_Comic() {
+	function __construct() {
 		load_webcomic_domain();
 		
 		$widget_ops = array( 'description' => __( 'Displays a link to a single, randomly selected comic', 'webcomic' ) );
-		$this->WP_Widget( 'random-comic', __( 'Random Comic', 'webcomic' ), $widget_ops );
+		parent::__construct( 'random-comic', __( 'Random Comic', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -217,11 +217,11 @@ class WP_Widget_Random_Comic extends WP_Widget {
  */
 class WP_Widget_Recent_Comics extends WP_Widget {
 	//constructor
-	function WP_Widget_Recent_Comics() {
+	function __construct() {
 		load_webcomic_domain();
 		
 		$widget_ops = array( 'description' => __( 'Displays a list of recently posted comics', 'webcomic' ) );
-		$this->WP_Widget( 'recent-comics', __( 'Recent Comics', 'webcomic' ), $widget_ops );
+		parent::__construct( 'recent-comics', __( 'Recent Comics', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -303,11 +303,11 @@ class WP_Widget_Recent_Comics extends WP_Widget {
  */
 class WP_Widget_Dropdown_Comics extends WP_Widget {
 	//constructor
-	function WP_Widget_Dropdown_Comics() {
+	function __construct() {
 		load_webcomic_domain();
 		
 		$widget_ops = array( 'description' => __( 'Displays a dropdown list of comic posts', 'webcomic' ) );
-		$this->WP_Widget( 'dropdown-comics', __( 'Dropdown Comics', 'webcomic' ), $widget_ops );
+		parent::__construct( 'dropdown-comics', __( 'Dropdown Comics', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -438,11 +438,11 @@ class WP_Widget_Comic_Archive extends WP_Widget {
 }*/
 class WP_Widget_Comic_Archive extends WP_Widget {
 	//constructor
-	function WP_Widget_Comic_Archive() {
+	function __construct() {
 		load_webcomic_domain();
 		
 		$widget_ops = array( 'description' => __( 'Displays an archive of your comics', 'webcomic' ) );
-		$this->WP_Widget( 'comic-archive', __( 'Comic Archive', 'webcomic' ), $widget_ops );
+		parent::__construct( 'comic-archive', __( 'Comic Archive', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
@@ -578,9 +578,9 @@ class WP_Widget_Comic_Archive extends WP_Widget {
  */
 class WP_Widget_Webcomic_Recent_Posts extends WP_Widget {
 	//constructor
-	function WP_Widget_Webcomic_Recent_Posts() {
+	function __construct() {
 		$widget_ops = array( 'description' => __( 'The most recent posts on your blog (ignores comic posts)', 'webcomic' ) );
-		$this->WP_Widget( 'recent-posts', __( 'Recent Posts', 'webcomic' ), $widget_ops );
+		parent::__construct( 'recent-posts', __( 'Recent Posts', 'webcomic' ), $widget_ops );
 	}
 	
 	//display
