@@ -696,6 +696,7 @@ function webcomic_admin_print_scripts() {
  */
 require_once( 'includes/wc-core.php' );
 require_once( 'includes/wc-widgets.php' );
+require_once( 'includes/wc-permalink-rewrite.php' );
 if ( is_admin() ) {
     require_once( 'includes/wc-admin.php' );
     require_once( 'includes/wc-admin-library.php' );
