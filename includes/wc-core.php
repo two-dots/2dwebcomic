@@ -250,25 +250,25 @@ function get_the_comic( $id = false, $limit = false, $chapter = false ) {
     }
     
     if ( is_file( get_comic_directory( 'abs', false, $comic_dir ) . get_post_meta( $comic_post->ID, 'comic_file', true ) ) ) {
-        $output->file        = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID : get_comic_directory( 'url', false, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_file', true ) );
+        $output->file        = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID : get_comic_directory( 'url', false, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_file', true ) );
         $output->file_name   = get_post_meta( $comic_post->ID, 'comic_file', true );
         $output->file_data   = getimagesize( get_comic_directory( 'abs', false, $comic_dir ) . $output->file_name );
         $output->flash       = ( 'application/x-shockwave-flash' == $output->file_data[ 'mime' ] ) ? true : false;
         
         if ( is_file( get_comic_directory( 'abs', true, $comic_dir ) . get_post_meta( $comic_post->ID, 'comic_large', true ) ) ) {
-            $output->large      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/large' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_large', true ) );
+            $output->large      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/large' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_large', true ) );
             $output->large_name = get_post_meta( $comic_post->ID, 'comic_large', true );
             $output->large_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $output->large_name );
         }
         
         if ( is_file( get_comic_directory( 'abs', true, $comic_dir ) . get_post_meta( $comic_post->ID, 'comic_medium', true ) ) ) {
-            $output->medium      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/medium' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_medium', true ) );
+            $output->medium      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/medium' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_medium', true ) );
             $output->medium_name = get_post_meta( $comic_post->ID, 'comic_medium', true );
             $output->medium_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $output->medium_name );
         }
         
         if ( is_file( get_comic_directory( 'abs', true, $comic_dir ) . get_post_meta( $comic_post->ID, 'comic_thumb', true ) ) ) {
-            $output->thumb      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/thumb' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_thumb', true ) );
+            $output->thumb      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/thumb' : get_comic_directory( 'url', true, $comic_dir ) . rawurlencode( get_post_meta( $comic_post->ID, 'comic_thumb', true ) );
             $output->thumb_name = get_post_meta( $comic_post->ID, 'comic_thumb', true );
             $output->thumb_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $output->thumb_name );
         }
@@ -288,7 +288,7 @@ function get_the_comic( $id = false, $limit = false, $chapter = false ) {
         
         foreach( array_keys( $comic_files ) as $key ) {
             if ( ( $date_id && false !== strpos( basename( $comic_files[ $key ] ), $date_id ) ) || ( $slug_id && false !== strpos( basename( $comic_files[ $key ] ), $slug_id ) ) || ( $meta_id && false !== strpos( basename( $comic_files[ $key ] ), $meta_id ) ) ) {
-                $output->file      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID : get_comic_directory( 'url', 0, $comic_dir ) . rawurlencode( basename( $comic_files[ $key ] ) );
+                $output->file      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID : get_comic_directory( 'url', 0, $comic_dir ) . rawurlencode( basename( $comic_files[ $key ] ) );
                 $output->file_name = basename( $comic_files[ $key ] );
                 $output->file_data = getimagesize( $comic_files[ $key ] );
                 break;
@@ -309,19 +309,19 @@ function get_the_comic( $id = false, $limit = false, $chapter = false ) {
                 
                 foreach ( $comic_thumbs as $comic_thumb ) {
                     if ( strpos( $comic_thumb, 'large' ) && !$output->large ) {
-                        $output->large      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/large' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
+                        $output->large      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/large' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
                         $output->large_name = $comic_thumb;
                         $output->large_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $comic_thumb );
                     }
                     
                     if ( strpos( $comic_thumb, 'medium' ) && !$output->medium ) {
-                        $output->medium      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/medium' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
+                        $output->medium      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/medium' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
                         $output->medium_name = $comic_thumb;
                         $output->medium_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $comic_thumb );
                     }
                     
                     if ( strpos( $comic_thumb, 'thumb' ) && !$output->thumb ) {
-                        $output->thumb      = ( get_option( 'comic_secure_paths' ) ) ? get_settings( 'home' ) . '?comic_object=' . $output->ID . '/thumb' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
+                        $output->thumb      = ( get_option( 'comic_secure_paths' ) ) ? get_option( 'home' ) . '?comic_object=' . $output->ID . '/thumb' : get_comic_directory( 'url', true, $comic_dir ) . $comic_thumb;
                         $output->thumb_name = $comic_thumb;
                         $output->thumb_data = getimagesize( get_comic_directory( 'abs', true, $comic_dir ) . $comic_thumb );
                     }
@@ -1042,7 +1042,8 @@ function first_comic_link( $label = false, $limit = false, $bookend = false ) {
     global $post;
     
     $comic   = get_the_comic( 'first', $limit );
-    $chapterID = ( $limit ) ? get_the_chapter( $limit )->first->ID : false;
+    $chapter = ( $limit ) ? get_the_chapter( $limit ) : false;
+    $chapterID = is_object( $chapter ) ? $chapter->first->ID : '';
     $object = '';
     
     if ( 'thumb' == $label || 'medium' == $label || 'large' == $label || 'full' == $label ) {
@@ -1099,6 +1100,7 @@ function last_comic_link( $label = false, $limit = false, $bookend = false ) {
     
     $comic   = get_the_comic( 'last', $limit );
     $chapter = ( $limit ) ? get_the_chapter( $limit ) : false;
+    $object = '';
     
     if ( 'thumb' == $label || 'medium' == $label || 'large' == $label || 'full' == $label ) {
         if ( $comic->flash ) {
@@ -1157,7 +1159,8 @@ function previous_comic_link( $label = false, $limit = false, $bookend = false )
     global $post;
     
     $comic   = get_the_comic( 'previous', $limit );
-    $chapterID = ( $limit ) ? get_the_chapter( $limit )->first->ID : false;
+    $chapter = ( $limit ) ? get_the_chapter( $limit ) : false;
+    $chapterID = is_object( $chapter ) ? $chapter->first->ID : '';
     $object = '';
     
     if ( 'thumb' == $label || 'medium' == $label || 'large' == $label || 'full' == $label ) {
@@ -1217,7 +1220,8 @@ function next_comic_link( $label = false, $limit = false, $bookend = false ) {
     global $post;
     
     $comic   = get_the_comic( 'next', $limit );
-    $chapterID = ( $limit ) ? get_the_chapter( $limit )->first->ID : false;
+    $chapter = ( $limit ) ? get_the_chapter( $limit ) : false;
+    $chapterID = is_object( $chapter ) ? $chapter->first->ID : '';
     $object = '';
     
     if ( 'thumb' == $label || 'medium' == $label || 'large' == $label || 'full' == $label ) {
@@ -1266,6 +1270,7 @@ function next_comic_link( $label = false, $limit = false, $bookend = false ) {
  */
 function random_comic_link( $label = false, $limit = false, $chapter = false ) {
     $comic = get_the_comic( 'random', $limit, $chapter );
+    $image = '';
     
     if ( 'thumb' == $label || 'medium' == $label || 'large' == $label || 'full' == $label ) {
         if ( $comic->flash ) {
@@ -1282,7 +1287,7 @@ function random_comic_link( $label = false, $limit = false, $chapter = false ) {
     
     $shortcut = ( get_option( 'comic_keyboard_shortcuts' ) ) ? ' kbd-shortcut' : '';
     
-    $class = 'random-comic-link' . $current;
+    $class = 'random-comic-link';
     
     echo $image . '<a href="' . $comic->link . '" title="Random comic" class="' . $class . '"><span>' . $link . '</span></a>';
 }

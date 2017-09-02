@@ -201,13 +201,13 @@ function get_comic_category( $all = false, $format = false ) {
  */
 function get_comic_directory( $type = 'abs', $thumbs = false, $category = false ) {
     if ( 'root' == $type )
-        return get_settings( 'siteurl' ) . '/' . get_option( 'comic_directory' ) . '/';
+        return get_option( 'siteurl' ) . '/' . get_option( 'comic_directory' ) . '/';
     
-    $prepend = ( 'abs' == $type ) ? ABSPATH : get_settings( 'siteurl' ) . '/';
-    $prepend = ( 'abs' == $type ) ? ABSPATH : ((!get_option('alternate_image_root')) ? get_settings('siteurl') : get_option('alternate_image_root')).'/';
+    $prepend = ( 'abs' == $type ) ? ABSPATH : get_option( 'siteurl' ) . '/';
+    $prepend = ( 'abs' == $type ) ? ABSPATH : ((!get_option('alternate_image_root')) ? get_option('siteurl') : get_option('alternate_image_root')).'/';
     
     if ( file_exists( ABSPATH . 'wpmu-settings.php' ) ) //WPMU Check
-        $prepend = ( 'abs' == $type ) ? BLOGUPLOADDIR : get_settings( 'siteurl' ) . '/files/';
+        $prepend = ( 'abs' == $type ) ? BLOGUPLOADDIR : get_option( 'siteurl' ) . '/files/';
     
     $catid  = ( $category ) ? $category : get_comic_category();
     $cat    = get_category( $catid );
